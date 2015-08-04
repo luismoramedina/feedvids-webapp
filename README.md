@@ -4,11 +4,12 @@
 
 - create a src/main/pyhton/config.py with this content:
 
-#api keys and config
+'''json
 app_config = {
     'consumer_key' : '$pocket_consumer_key',
     'mongo_url' : '$mongo_database_url'
 }
+'''
 
 - create the mongo collection 'users' with columns: 'user', 'access_token', 'service'
 
