@@ -4,7 +4,7 @@
 
 - create a src/main/pyhton/config.py with this content:
 
-```json
+```python
 app_config = {
     'consumer_key' : '$pocket_consumer_key',
     'mongo_url' : '$mongo_database_url'
