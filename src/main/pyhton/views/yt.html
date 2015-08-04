@@ -1,0 +1,18 @@
+<html>
+<script type="text/javascript">
+var player;
+function onYouTubePlayerAPIReady() {
+player = new YT.Player('player', {
+  height: '390',
+  width: '640',
+  videoId: 'your_video_id',
+  playerVars: { 'autoplay': 0, 'controls': 1, 'playlist':['your_video_id', '...']},
+  events: {
+    'onReady': onPlayerReady,
+    'onStateChange': onPlayerStateChange
+  }
+});
+}
+</script>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<form>
+    <input type="button" name="other" onclick="prev()" value="prev"/>
+    <input type="button" name="other" onclick="next()" value="next"/>
+    <input type="button" name="other" onclick="deleteItem()" value="delete"/>
+</form>
+<div id="player"></div>
+
+<script src="//www.gstatic.com/cast/js/receiver/1.0/cast_receiver.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+<script>
+
+    // first create our receiver object and our channel handler
+    var receiver = new cast.receiver.Receiver('FF606FF1', ['ChromecastYoutube'],"",5);
+    var ytChannelHandler = new cast.receiver.ChannelHandler('ChromecastYoutube'); //  'using 'ChromecastYoutube' as my dev namespace. Wouldn't really be that in production.
+    ytChannelHandler.addChannelFactory(receiver.createChannelFactory('ChromecastYoutube'));
+    ytChannelHandler.addEventListener(
+            cast.receiver.Channel.EventType.MESSAGE,
+            onMessage.bind(this)
+    );
+
+    receiver.start();
+
+    window.addEventListener('load', function() { // we won't try to load the iframe libraries until the chromecast window is fully loaded.
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    });
+
+
+    var vidsInJson = '["dA-nr9qifI4", "JW5meKfy3fY", "dA-nr9qifI4", "JW5meKfy3fY"]'
+    //  var vidsInJson = '{{vids}}';
+    var vidList = JSON.parse(vidsInJson);
+    var currentVidPosition = 0;
+    //Load player api asynchronously.
+    var tag = document.createElement('script');
+    tag.src = "http://www.youtube.com/player_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    var player;
+    function onYouTubePlayerAPIReady() {
+        player = new YT.Player('player', {
+            height: '390',
+            width: '640',
+            videoId: vidList[currentVidPosition],
+            playerVars:{
+                'enablejsapi': 1,
+                'autoplay': 0,
+                'rel': 0,
+                'showinfo': 0,
+                'controls': 1,
+                'egm':0,
+                'showsearch':0
+            },
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange,
+                'onError': onError
+            }
+        });
+    }
+
+    function onPlayerReady(event) {
+        event.target.playVideo();
+    }
+
+    function onError(event) {
+        alert(event)
+        next();
+    }
+
+    function onPlayerStateChange(event,element) {
+        //When the video has ended
+        if (event.data == YT.PlayerState.ENDED) {
+            next();
+        } else if (event.data == YT.PlayerState.UNSTARTED) {
+            //Get rid of the player
+            //element.style.display = "none";
+//        next();
+        }
+    }
+
+    function next () {
+        if (currentVidPosition != (vidList.length - 1)) {
+            currentVidPosition = currentVidPosition + 1;
+            video = vidList[currentVidPosition]
+            console.log(video)
+            if (video.indexOf("http") > -1) {
+                player.loadVideoByUrl(video);
+            } else {
+                player.loadVideoById(video);
+            }
+        }
+    }
+
+    function prev () {
+        if (currentVidPosition != 0) {
+            currentVidPosition = currentVidPosition - 1;
+            player.loadVideoById(vidList[currentVidPosition][1]);
+        }
+    }
+
+    function deleteItem () {
+        deletePocketItem(vidList[currentVidPosition][0]);
+    }
+
+
+</script>
+</body>
+</html>

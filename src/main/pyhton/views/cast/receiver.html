@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedvids Cast Receiver</title>
+</head>
+<body>
+<div style="z-index: 1; position: absolute; width: 75%; background-color: rgba(255,255,255,0.5);">
+    <div id="div-notifications" style="float: left; ">
+        <!--data-dismiss="alert"-->
+        <div id="div_notification_text" style="">...</div>
+    </div>
+</div>
+<div id="player" style="text-align: center"></div>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="http://www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
+<script type="text/javascript" src="feedvids-cast-receiver.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript">
+
+    window.onload = function () {
+        loadChromecast();
+    };
+
+    var vidsInJson = '["PNu_-deVemE", "Zq40vTdaa2w", "iZZUY32iCzU", "6RMZhCJG3mg", "FyzIqjbu7O0", "ucm8pbXM1BI", "BvIdBi8uUwA", "JlclKDn0z_E", "0xQ3y902DEQ", "1dQf0sANoDw", "dnerqDWwVgg", "fL6FaI-wJxs", "5AH9H3_rabE", "j3VjJKKVNew", "S8aiEfPz6mc", "5o46p0r6GQ4", "QrqZl2QIz0c", "dnerqDWwVgg", "Qi0RIowmrQU", "RUUAfhbdx2Y", "-HnBYO8k5pM", "efnsrLg03e4", "FUQhNGEu2KA", "J8Z549GKkeM", "eLQVVQIg9ME", "3EPWhYmgdJk", "LwgX0OVrM3Y", "z3mM5-t2w68", "rCj0cd8e_hw", "KJXw-QHkdDw", "VSFGAl1BekY", "OCAlRm1Mcxw", "pQb6Qrao4VU", "videoseries", "UAmY_gY61kI", "vUdlbcX_Gqo", "FjohnEnCJ6I", "8XtqUOegCv8", "YV2HUUpDiDU", "p9MMJgFKv24", "7d7cr-zdm1Y", "jPUGyTalpvQ", "taaEzHI9xyY", "QW7OVd8YBr0", "vyniPM2Kch0", "p8kjbjx2EUw", "YLBQi3ERh14", "G5zPqgQ67yo", "9YO4pVBtWxs", "HzqThXINmN0", "XmUs2v8XAVU", "vJZOMyxgF7Q", "M8lL0TbItBc", "Zl77rUgiDYA", "eoZ66ktG4gk", "17d6WRnQeuo", "S_YDZw2utZM", "du4JbfK5okA", "eQq4FH81jd0", "VHNV3LHSvx4", "rRoy6I4gKWU", "5JU3W9itQXY", "8O6sChAi9Tk", "0HWv7YJtYCA", "iEw8w0s5hOM", "2FmFXQSIzCo", "E5fccx15b2k", "Q04ILDXe3QE", "oEqV5TqqogM", "lNOMk9d6NI8", "cN2OCcTe8Bo", "MlK8jCJrsH4", "zByhbZV79S0", "6QHkv-bSlds", "I4vX-twze9I", "M7lc1UVf-VE", "QnkiKrruJiE", "zhszwkcay2A", "HS-UsJwnG-g", "v5u_Owtbfew", "SfbdQYmyEnI", "nsZK12AG1nw", "d6XXgeAkBfQ", "9edp1ch__0s", "NkCmcTnyNoc", "iUtS3YpWt5U", "yxW29JVXCqc", "1eudJzUP1Oo", "QJp6hmASstQ", "JuaBy3e6fd4", "cmZq7Yok6Ns", "kT019zkUMF0", "Qt1_atU_Qsg", "p65fODkI3hA", "uoSrI6MOy10", "QuorKiKYey8", "aF-zt73Zm5I", "N5V203T95P0", "T_BQevqRp44", "efdiUjZLzwM", "FmjMc-9PKRI", "_jFHrpknS4c", "dYBDCsNDIT8", "2FGNvbc2MRk", "sIZYLYJwws0", "q-Q2uU6CbGQ", "s_cCB2R5_1k", "aTLySbGoMX0"]';
+    //    var vidsInJson = '["PNu_-deVemE"]';
+    //  var vidsInJson = '{{vids}}';
+    var vidList = JSON.parse(vidsInJson);
+    var currentVidPosition = 0;
+
+
+    var w = window.innerWidth - 25;
+    var h = window.innerHeight - 25;
+
+    var tag = document.createElement('script');
+    tag.src = "http://www.youtube.com/player_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    var player;
+    function onYouTubePlayerAPIReady() {
+        player = new YT.Player('player', {
+            height: h,
+            width: w,
+            playerVars: {
+                videoId: vidList[currentVidPosition],
+                'enablejsapi': 1,
+                'autoplay': 1,
+                'rel': 0,
+                'showinfo': 0,
+                'controls': 0,
+                'egm': 0,
+                'showsearch': 0
+            },
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange,
+                'onError': onError
+            }
+        });
+    }
+
+    function loadChromecast() {
+        cast.receiver.logger.setLevelValue(0);
+        window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
+        console.log('Starting Receiver Manager');
+
+        // handler for the 'ready' event
+        castReceiverManager.onReady = function (event) {
+            console.log('Received Ready event: ' + JSON.stringify(event.data));
+            window.castReceiverManager.setApplicationState("Application status is ready...");
+        };
+
+        // handler for 'senderconnected' event
+        castReceiverManager.onSenderConnected = function (event) {
+            console.log('Received Sender Connected event: ' + event.data);
+            console.log(window.castReceiverManager.getSender(event.data).userAgent);
+        };
+
+        // handler for 'senderdisconnected' event
+        castReceiverManager.onSenderDisconnected = function (event) {
+            console.log('Received Sender Disconnected event: ' + event.data);
+            if (window.castReceiverManager.getSenders().length == 0) {
+                //window.close();
+            }
+        };
+
+        // handler for 'systemvolumechanged' event
+        castReceiverManager.onSystemVolumeChanged = function (event) {
+            console.log('Received System Volume Changed event: ' + event.data['level'] + ' ' +
+                    event.data['muted']);
+        };
+
+        // create a CastMessageBus to handle messages for a custom namespace
+        var namespace = 'urn:x-cast:com.google.cast.sample.helloworld';
+        window.messageBus =
+                window.castReceiverManager.getCastMessageBus(namespace);
+
+        // handler for the CastMessageBus message event
+        window.messageBus.onMessage = function (event) {
+            console.log('Message [' + event.senderId + ']: ' + event.data);
+            // display the message from the sender
+            displayText(event.data);
+            // inform all senders on the CastMessageBus of the incoming message event
+            // sender message listener will be invoked
+            window.messageBus.send(event.senderId, event.data);
+        }
+
+        // initialize the CastReceiverManager with an application status message
+        window.castReceiverManager.start({statusText: "Application is starting"});
+        console.log('Receiver Manager started');
+    }
+
+
+
+    function broadcast(message) {
+        window.messageBus.broadcast(message);
+    };
+
+
+
+    function onPlayerReady(event) {
+        //event.target.playVideo();
+    }
+
+    function onError(event) {
+        alert(event);
+        next();
+    }
+
+    function onPlayerStateChange(event, element) {
+        event.target.setVolume(25);
+        //When the video has ended
+        if (event.data == YT.PlayerState.ENDED) {
+            next();
+        } else if (event.data == YT.PlayerState.UNSTARTED) {
+            //Get rid of the player
+            //element.style.display = "none";
+            //        next();
+        }
+    }
+
+    // utility function to display the text message in the input field
+    function displayText(text) {
+        console.log(text);
+        parsed = JSON.parse(text);
+        command = parsed['command'];
+        if (command == 'next') {
+            next();
+        } else if (command == 'load') {
+            vidList = parsed['data'];
+            currentVidPosition = 0;
+            player.loadVideoById(vidList[currentVidPosition]);
+        } else if (command == 'prev') {
+            prev();
+        }
+
+        //          document.getElementById("message").innerHTML=text;
+        //          window.castReceiverManager.setApplicationState(text);
+    };
+
+    function next() {
+        if (currentVidPosition != (vidList.length - 1)) {
+            currentVidPosition = currentVidPosition + 1;
+            playVid();
+        }
+        broadcast("next-vid");
+    }
+
+    function playVid() {
+        var video = vidList[currentVidPosition];
+        console.log(video);
+        if (video.indexOf("http") > -1) {
+            player.loadVideoByUrl(video);
+        } else {
+            player.loadVideoById(video);
+        }
+        showVideoInfo(video);
+    }
+    function prev() {
+        if (currentVidPosition != 0) {
+            currentVidPosition = currentVidPosition - 1;
+            playVid();
+        }
+        broadcast("prev-vid");
+    }
+
+    function play() {
+        player.play();
+        broadcast("play");
+    }
+
+    function pause() {
+        player.pause();
+        broadcast("pause");
+    }
+
+    function showVideoInfo(video) {
+        $("#div_notification_text").html('...');
+        execute('https://gdata.youtube.com/feeds/api/videos/' + video + '?v=1&alt=json', callback);
+    }
+
+    function callback(data) {
+        var videoTitle = data['entry']['title']['$t'];
+        //https://www.youtube.com/watch?v=eQq4FH81jd0
+        $("#video_title").html(videoTitle);
+        $("#div_notification_text").html(videoTitle);
+    }
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<footer style="position:fixed;bottom:0;width: 100%" class="panel-footer">
+
+    <form>
+        <table style="table-layout:fixed; width: 100%">
+            <tr>
+                <td>
+                    <div id="resolved_title"></div>
+                </td>
+
+                <td>
+                    <div style="text-align: center">
+                        <button type="button" onclick="prevItem()" value="<" class="btn">
+                            <span class="glyphicon glyphicon-chevron-left" title="previous item"></span>
+                        </button>
+
+                        <button type="button" onclick="prevVid()" value="<<" class="btn">
+                            <span class="glyphicon glyphicon-fast-backward" title="previous vid"></span>
+                        </button>
+                        
+                        <button  value="delete" type="button" onclick="deleteItem()"class="btn btn-danger">
+                            <span class="glyphicon glyphicon-trash" title="delete item"></span>
+                        </button>
+                        
+                        <button value="archive" type="button" onclick="archiveItem()" class="btn btn-warning">
+                            <span class="glyphicon glyphicon-ok"  title="archive item"></span>
+                        </button>
+
+                        <button type="button" onclick="nextVid()" value=">>" class="btn" title="next vid">
+                            <span class="glyphicon glyphicon-fast-forward"></span>
+                        </button>
+
+                        <button type="button" onclick="nextItem()" value=">" class="btn">
+                            <span class="glyphicon glyphicon-chevron-right" title="next item"></span>
+                        </button>
+
+                    </div>
+                </td>
+
+                <td>
+                    <div id="video_title"></div><div id="video_counter"></div>
+                </td>
+
+
+                <td width="5%">
+                    <button id="cast_button" type="button" onclick="castVideoList();" value="cast">
+                        <span class="" title="cast"></span>
+                        <img id="cast_button_image" src="img/ic_media_route_off_holo_light.png">
+                    </button>
+                </td>
+
+
+                <td width="5%">
+                    {% include 'social_div_dropdown.html'%}
+                </td>
+
+            </tr>
+        </table>
+    </form>
+</footer>

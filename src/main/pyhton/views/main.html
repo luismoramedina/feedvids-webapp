@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'header.html' %}
+<body>
+
+{% include 'navbar.html' %}
+
+
+<br>
+<br>
+<br>
+
+<div class="container">
+    <div class="container">
+
+
+        <div id="player-container">
+            <div class="jumbotron">
+                <h1>Welcome to feedvids!</h1>
+                <p>With feedvids you can watch all your youtube videos you have in
+                    your favourite feeds as a playlist. Right now, we only get integration with pocket, but stay tuned...
+                </p>
+                <p>What do you need?
+                    <br>
+                    Only a <b><a href="http://getpocket.com">pocket</a> account</b>. We need your pocket account to make a login and get the items to find out the videos you want to watch later.
+                    <br>
+
+                    <br>And that's all. Click on the next link to start to use feedvids.
+                </p>
+                <p><a class="btn btn-primary btn-lg" role="button" href="/pocket-playlist">Go!</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+{% include 'footer.html' %}
+</html>

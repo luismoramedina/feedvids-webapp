@@ -1,0 +1,35 @@
+<!-- Old code -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedcast</title>
+    <script type="text/javascript" src="//www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
+    <script type="text/javascript" src="/js/cast-client.js"></script>
+
+    <script type="text/javascript">
+
+        var data = {{vids}};
+
+    </script>
+</head>
+<body>
+<table id="wrapper">
+    <tr>
+        <td>
+            <button name="prev" onClick="sendToReceiver({'command':'prev'});">prev</button>
+            <button name="send" onClick="sendToReceiver({'command':'load', 'data': data});">send</button>
+            <button name="next" onClick="sendToReceiver({'command':'next'});">next</button>
+        </td>
+    </tr>
+</table>
+
+<!-- Debbugging output -->
+<div style="margin:10px;">
+    <label for="debugmessage">
+    </label>
+    <textarea rows="20" cols="70" id="debugmessage">
+    </textarea>
+</div>
+
+</body>
+</html>

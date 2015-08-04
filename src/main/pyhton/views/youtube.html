@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'header.html' %}
+<body>
+
+{% include 'navbar.html' %}
+
+<br>
+<br>
+<br>
+
+<div class="container">
+
+    <div style="z-index: 1; position: absolute; width: 100%; padding-right: 100px;" id="notifications-wrapper">
+        <div id="div-notifications" class="alert alert-success alert-dismissable" style="float: right">
+            <!--data-dismiss="alert"-->
+            <a href="#" class="close"
+               onclick="$('#div-notifications').hide();"><i>&times;</i></a>
+            <div id="div-notification-text"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="row">
+            <div class="col-sm-3" id="side">
+
+<!--
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-folder-close"></span> Home</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <table class="table">
+                                            <tbody><tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-pencil text-primary"></span> Articles</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-flash text-success"></span> News</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-file text-info"></span> About</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-comment text-success"></span> Comments</a> <span class="badge">42</span>
+                                                </td>
+                                            </tr>
+                                            </tbody></table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-user"></span> Profile</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseThree" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <table class="table">
+                                            <tbody><tr>
+                                                <td>
+                                                    <a href="#">Change Password</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#">Notifications</a> <span class="label label-info">9</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#">Import</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#" class="text-danger"><span class="glyphicon glyphicon-trash text-danger"></span> Delete Account</a>
+                                                </td>
+                                            </tr>
+                                            </tbody></table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th"></span> Examples</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <table class="table">
+                                            <tbody><tr>
+                                                <td>
+                                                    <a href="#">Orders</a> <span class="label label-success">$ 42</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#">Invoices</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#">Shipments</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#">Logging</a>
+                                                </td>
+                                            </tr>
+                                            </tbody></table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                            <span class="glyphicon glyphicon-file"></span> Reports</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseFour" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <table class="table">
+                                            <tbody><tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-usd"></span> Sales</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-user"></span> Customers</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-tasks"></span> Products</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a>
+                                                </td>
+                                            </tr>
+                                            </tbody></table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                            <span class="glyphicon glyphicon-file"></span> Reports</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseFour" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <table class="table">
+                                            <tbody><tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-usd"></span> Sales</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-user"></span> Customers</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-tasks"></span> Products</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a>
+                                                </td>
+                                            </tr>
+                                            </tbody></table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                            <span class="glyphicon glyphicon-file"></span> Reports</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseFour" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <table class="table">
+                                            <tbody><tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-usd"></span> Sales</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-user"></span> Customers</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-tasks"></span> Products</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a>
+                                                </td>
+                                            </tr>
+                                            </tbody></table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                            <span class="glyphicon glyphicon-file"></span> Reports</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseFour" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <table class="table">
+                                            <tbody><tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-usd"></span> Sales</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-user"></span> Customers</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-tasks"></span> Products</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a>
+                                                </td>
+                                            </tr>
+                                            </tbody></table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                            <span class="glyphicon glyphicon-file"></span> Reports</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseFour" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <table class="table">
+                                            <tbody><tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-usd"></span> Sales</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-user"></span> Customers</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-tasks"></span> Products</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a>
+                                                </td>
+                                            </tr>
+                                            </tbody></table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                            <span class="glyphicon glyphicon-file"></span> Reports</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseFour" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <table class="table">
+                                            <tbody><tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-usd"></span> Sales</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-user"></span> Customers</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-tasks"></span> Products</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a>
+                                                </td>
+                                            </tr>
+                                            </tbody></table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                            <span class="glyphicon glyphicon-file"></span> Reports</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseFour" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <table class="table">
+                                            <tbody><tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-usd"></span> Sales</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-user"></span> Customers</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-tasks"></span> Products</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a>
+                                                </td>
+                                            </tr>
+                                            </tbody></table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+-->
+<ul class="list-group">
+    <!--
+    <ul class="nav nav-list bs-docs-sidenav affix" data-spy="affix" data-offset-top="255" data-offset-bottom="200">
+        -->
+    <li class="list-group-item">
+        <span class="badge">
+            14
+            <button  value="delete" type="button" onclick="deleteItem()"class="btn btn-xs btn-danger">
+                <span class="glyphicon glyphicon-trash" title="delete item"></span>
+            </button>
+            <button value="archive" type="button" onclick="archiveItem()" class="btn btn-xs btn-warning">
+                <span class="glyphicon glyphicon-ok"  title="archive item"></span>
+            </button>
+        </span>
+        Item for tests      with large test what we dooooooo
+    </li>
+
+    <li class="list-group-item">
+        <span class="badge">14</span>
+        Item for tests
+        <button  value="delete" type="button" onclick="deleteItem()"class="btn btn-xs btn-danger">
+            <span class="glyphicon glyphicon-trash" title="delete item"></span>
+        </button>
+
+        <button value="archive" type="button" onclick="archiveItem()" class="btn btn-xs btn-warning">
+            <span class="glyphicon glyphicon-ok"  title="archive item"></span>
+        </button>
+
+<!--
+        <ul class="list-group">
+            <li class="list-group-item">
+                Sub Item for tests
+            </li>
+        </ul>
+-->
+
+    </li>
+</ul>
+            </div>
+            <div class="col-sm-12 col-sm-offset-3" id="main">
+                <div id="player-container">
+
+                    <div id="player"></div>
+
+                </div>
+            </div>
+
+        </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+{% include 'player-footer.html' %}
+
+<script>
+    var videoTitle;
+
+    $("#div-notifications").hide();
+    $("#pocket-link").addClass('active');
+
+    //  var vidsInJson = '["dA-nr9qifI4", "JW5meKfy3fY", "dA-nr9qifI4", "JW5meKfy3fY"]'
+    var vidList = {{vids}};
+    var vids_for_cast = {{vids_for_cast}};
+
+    var currentVidPosition = 0;
+    var currentItemPosition = 0;
+    {% if offset %}
+        currentItemPosition = {{offset}};
+    {% endif %}
+
+    showItemDescription(currentItemPosition);
+    showVideoInfo(getVideoId(currentItemPosition, currentVidPosition));
+
+    //var vidList = JSON.parse(vidsInJson);
+
+    //Load player api asynchronously.
+    var tag = document.createElement('script');
+    tag.src = "http://www.youtube.com/player_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    var player;
+
+    function onYouTubePlayerAPIReady() {
+        player = new YT.Player(
+                'player', {
+                    height: '390',
+                    width: '640',
+                    videoId: vidList[currentItemPosition]['video_ids'][currentVidPosition],
+                    playerVars: {
+                        'autoplay': 1,
+                        'rel': 0,
+                        'showinfo': 1,
+                        'egm': 0,
+                        'showsearch': 0
+                    },
+                    events: {
+                        'onReady': onPlayerReady,
+                        'onStateChange': onPlayerStateChange,
+                        'onError': onPlayerError
+                    }
+                });
+    }
+
+    function onPlayerReady(event) {
+        //This crash on mobile environments
+        //event.target.playVideo();
+    }
+
+    function onPlayerError(event) {
+        console.log("ERROR: " + event);
+        showNotification("Error " + event.message);
+        nextVid();
+    }
+
+    function onPlayerStateChange(event, element) {
+        //When the video has ended
+        if (event.data == YT.PlayerState.ENDED) {
+            nextVid();
+        } else if (event.data == YT.PlayerState.UNSTARTED) {
+            //Get rid of the player
+            //element.style.display = "none";
+            //nextVid();
+            console.log("unstarted")
+        }
+    }
+
+    function showItemDescription(itemPosition) {
+        var title = vidList[itemPosition]['resolved_title'];
+        //http://getpocket.com/a/read/%item%
+        var itemLink = "<a target='_blank' href='http://getpocket.com/a/read/" +
+                vidList[currentItemPosition]['item_id'] + "'>" + title + '</a>'
+
+        $("#resolved_title").html(itemLink);
+    }
+
+    function getVideoId(itemPosition, videoPosition) {
+        return vidList[itemPosition]['video_ids'][videoPosition];
+    }
+
+    function showVideoInfo(video) {
+        $("#video_title").html('...');
+        execute('https://gdata.youtube.com/feeds/api/videos/' + video + '?v=1&alt=json', callback);
+    }
+
+    function setupSocialBar(videoTitle, videoId) {
+        //id="twitter_social"
+        var youtubeLink = "http://www.youtube.com/watch?v=";
+        var twiterShare = "https://twitter.com/intent/tweet?text=";
+        var mailShare = "mailto:?subject=";
+        var facebookShare = "https://www.facebook.com/sharer/sharer.php?u=";
+        var googleplusShare = "https://plus.google.com/share?url=";
+
+        var videoLink = youtubeLink + videoId;
+
+        var msg_body = videoTitle + " " + videoLink;
+
+        $("#twitter_link").prop("href", twiterShare + msg_body);
+        $("#mail_link").prop("href",  mailShare +  msg_body + "&body=" + msg_body);
+        $("#facebook_link").prop("href",  facebookShare + videoLink);
+        $("#googleplus_link").prop("href",  googleplusShare + videoLink);
+    }
+
+    function showCounter() {
+        var count = currentVidPosition + 1;
+        var total = vidList[currentItemPosition]['video_ids'].length;
+        if (total != 1) {
+            $("#video_counter").html(count + " - " + total);
+        } else {
+            $("#video_counter").html("");
+        }
+
+
+    }
+    function callback(data) {
+        videoTitle = data['entry']['title']['$t'];
+        var videoId = getVideoId(currentItemPosition, currentVidPosition);
+        var videoLink = "<a target='_blank' href='http://www.youtube.com/watch?v=" +
+                videoId + "'>" + videoTitle + '</a>'
+        //https://www.youtube.com/watch?v=eQq4FH81jd0
+        $("#video_title").html(videoLink);
+        changeTitle(videoTitle, vidList[currentItemPosition]['resolved_title']);
+        setupSocialBar(videoTitle, videoId);
+        showCounter();
+    }
+
+    function changeTitle(videoTitle, altName) {
+        if (videoTitle == undefined) {
+            videoTitle = altName;
+        };
+        document.title = videoTitle + ' - Feedvids';
+    }
+
+    function playVideo(itemPosition, vidPosition) {
+        var video = getVideoId(itemPosition, vidPosition);
+        showVideoInfo(video);
+        showItemDescription(itemPosition);
+        console.log('position:' + itemPosition + " -> " + vidPosition );
+        console.log('video id: ' + video);
+        if (video.indexOf("http") > -1) {
+            player.loadVideoByUrl(video);
+        } else {
+            player.loadVideoById(video);
+        }
+    }
+
+    function nextItem() {
+
+        if (currentItemPosition + 1 < vidList.length) {
+            currentItemPosition = currentItemPosition + 1;
+            currentVidPosition = 0;
+            playVideo(currentItemPosition, currentVidPosition);
+        }
+    }
+
+    function prevItem() {
+        if (currentItemPosition != 0) {
+            currentItemPosition = currentItemPosition - 1;
+            currentVidPosition = 0;
+            playVideo(currentItemPosition, currentVidPosition);
+        }
+    }
+
+    function nextCastVideo() {
+        sendToReceiver({'command':'next'});
+    }
+
+    function prevCastVideo() {
+        sendToReceiver({'command':'prev'});
+    }
+
+    function castVideoList() {
+        sendToReceiver({'command':'load', 'data': vids_for_cast});
+        if (isCasting()) {
+            $("#cast_button_image").attr("src","img/ic_media_route_on_holo_light.png");
+            //$("#player").hide();
+        }
+    }
+
+    function nextVid() {
+        if (isCasting()) {
+            nextCastVideo();
+        } else {
+            if(currentVidPosition + 1 < vidList[currentItemPosition]['video_ids'].length) {
+                currentVidPosition = currentVidPosition + 1;
+                playVideo(currentItemPosition, currentVidPosition);
+            } else {
+                if(currentItemPosition + 1 < vidList.length) {
+                    currentVidPosition = 0;
+                    currentItemPosition = currentItemPosition + 1;
+                    playVideo(currentItemPosition, currentVidPosition);
+                } else {
+                    //last!
+                }
+            }
+//        showNotification("Next vid" + currentItemPosition + " : " + currentVidPosition);
+        }
+
+    }
+
+    function prevVid() {
+        if (isCasting()) {
+            prevCastVideo();
+        } else {
+            if(currentVidPosition != 0) {
+                currentVidPosition = currentVidPosition - 1;
+                playVideo(currentItemPosition, currentVidPosition);
+            } else {
+                if(currentItemPosition != 0) {
+                    currentVidPosition = 0;
+                    currentItemPosition = currentItemPosition - 1;
+                    playVideo(currentItemPosition, currentVidPosition);
+                } else {
+                    //first!
+                }
+            }
+        }
+    }
+
+    function showNotification(text) {
+        $("#div-notification-text").html(text);
+        $("#div-notifications").show();
+    }
+
+    function deleteItem() {
+        deletePocketItem(vidList[currentItemPosition]['item_id']);
+        showNotification("Item deleted")
+    }
+
+    function archiveItem() {
+        archivePocketItem(vidList[currentItemPosition]['item_id']);
+        showNotification("Item archived")
+    }
+
+
+</script>
+<script type="text/javascript" src="/js/cast-client.js"></script>
+<script type="text/javascript" src="//www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
+
+</html>

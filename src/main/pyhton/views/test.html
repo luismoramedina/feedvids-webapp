@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><title>test</title></head>
+<script>
+
+    //  var vidsInJson = '["dA-nr9qifI4", "JW5meKfy3fY", "dA-nr9qifI4", "JW5meKfy3fY"]'
+    vids = [
+        {
+            "time_added": "2013-12-10",
+            "time_updated": "2013-12-10",
+            "excerpt": "Tres lustros han pasado desde el \u00faltimo single de estudio publicado por Swervedriver y ahora se han decidido a editar el de \u2018Deep Wound\u2019, el tema in\u00e9dito que la primavera pasada los brit\u00e1nicos estrenaron en el programa de TV Late Nigth With Jimmi Fallon.",
+            "resolved_title": "Los m\u00edticos Swervedriver estrenan el v\u00eddeo de su primer single en quince a\u00f1os",
+            "url": "http://www.hipersonica.com/videos/los-miticos-swervedriver-estrenan-el-video-de-su-primer-single-en-quince-anos",
+            "item_id": "499158228",
+            "video_id": "Sc8vJFBIvRg"
+        },
+        {
+            "time_added": "2013-12-10",
+            "time_updated": "2013-12-10",
+            "excerpt": "Enlace permanente",
+            "resolved_title": "Reinventando la rueda",
+            "url": "http://sucede.es/post/69480639386?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+Sucedees+%28Sucede.es%29",
+            "item_id": "498600398",
+            "video_id": "S10GMfG2NMY"
+        },
+        [
+            "497783181",
+            "4eiHoXgyNag"
+        ],
+        {
+            "time_added": "2013-12-07",
+            "time_updated": "2013-12-07",
+            "excerpt": "High On Fire nos dejaron a mediados de octubre escuchar el primer tema nuevo desde la publicaci\u00f3n de De Vermis Mysteriis en la primavera de 2012.",
+            "resolved_title": "High On Fire envuelven su single 'Slave The Hive' en una pesadilla hospitalaria",
+            "url": "http://www.hipersonica.com/videos/high-on-fire-envuelven-su-single-slave-the-hive-en-una-pesadilla-hospitalaria",
+            "item_id": "496564372",
+            "video_id": "1CCUO2HWs6k"
+        },
+        {
+            "time_added": "2013-12-05",
+            "time_updated": "2013-12-05",
+            "excerpt": "Encorsetado vitalmente por las cuatro paredes del Indie Pop y del Garage Rock, 2013 ha sido el a\u00f1o de mi bautismo electr\u00f3nico. Nunca antes hab\u00eda disfrutado tan plenamente un g\u00e9nero que, hasta hace escasos d\u00edas, lo observaba fundido entre una espesa niebla.",
+            "resolved_title": "El a\u00f1o de mi bautismo electr\u00f3nico",
+            "url": "http://www.hipersonica.com/monograficos/el-ano-de-mi-bautismo-electronico",
+            "item_id": "495164915",
+            "video_id": "2FmFXQSIzCo"
+        },
+        {
+            "time_added": "2013-12-05",
+            "time_updated": "2013-12-05",
+            "excerpt": "Encorsetado vitalmente por las cuatro paredes del Indie Pop y del Garage Rock, 2013 ha sido el a\u00f1o de mi bautismo electr\u00f3nico. Nunca antes hab\u00eda disfrutado tan plenamente un g\u00e9nero que, hasta hace escasos d\u00edas, lo observaba fundido entre una espesa niebla.",
+            "resolved_title": "El a\u00f1o de mi bautismo electr\u00f3nico",
+            "url": "http://www.hipersonica.com/monograficos/el-ano-de-mi-bautismo-electronico",
+            "item_id": "495164915",
+            "video_id": "E5fccx15b2k"
+        },
+        {
+            "time_added": "2013-12-05",
+            "time_updated": "2013-12-05",
+            "excerpt": "Encorsetado vitalmente por las cuatro paredes del Indie Pop y del Garage Rock, 2013 ha sido el a\u00f1o de mi bautismo electr\u00f3nico. Nunca antes hab\u00eda disfrutado tan plenamente un g\u00e9nero que, hasta hace escasos d\u00edas, lo observaba fundido entre una espesa niebla.",
+            "resolved_title": "El a\u00f1o de mi bautismo electr\u00f3nico",
+            "url": "http://www.hipersonica.com/monograficos/el-ano-de-mi-bautismo-electronico",
+            "item_id": "495164915",
+            "video_id": "Q04ILDXe3QE"
+        },
+        {
+            "time_added": "2013-12-05",
+            "time_updated": "2013-12-05",
+            "excerpt": "Encorsetado vitalmente por las cuatro paredes del Indie Pop y del Garage Rock, 2013 ha sido el a\u00f1o de mi bautismo electr\u00f3nico. Nunca antes hab\u00eda disfrutado tan plenamente un g\u00e9nero que, hasta hace escasos d\u00edas, lo observaba fundido entre una espesa niebla.",
+            "resolved_title": "El a\u00f1o de mi bautismo electr\u00f3nico",
+            "url": "http://www.hipersonica.com/monograficos/el-ano-de-mi-bautismo-electronico",
+            "item_id": "495164915",
+            "video_id": "oEqV5TqqogM"
+        },
+        {
+            "time_added": "2013-12-05",
+            "time_updated": "2013-12-05",
+            "excerpt": "Encorsetado vitalmente por las cuatro paredes del Indie Pop y del Garage Rock, 2013 ha sido el a\u00f1o de mi bautismo electr\u00f3nico. Nunca antes hab\u00eda disfrutado tan plenamente un g\u00e9nero que, hasta hace escasos d\u00edas, lo observaba fundido entre una espesa niebla.",
+            "resolved_title": "El a\u00f1o de mi bautismo electr\u00f3nico",
+            "url": "http://www.hipersonica.com/monograficos/el-ano-de-mi-bautismo-electronico",
+            "item_id": "495164915",
+            "video_id": "lNOMk9d6NI8"
+        },
+        {
+            "time_added": "2013-12-05",
+            "time_updated": "2013-12-05",
+            "excerpt": "Encorsetado vitalmente por las cuatro paredes del Indie Pop y del Garage Rock, 2013 ha sido el a\u00f1o de mi bautismo electr\u00f3nico. Nunca antes hab\u00eda disfrutado tan plenamente un g\u00e9nero que, hasta hace escasos d\u00edas, lo observaba fundido entre una espesa niebla.",
+            "resolved_title": "El a\u00f1o de mi bautismo electr\u00f3nico",
+            "url": "http://www.hipersonica.com/monograficos/el-ano-de-mi-bautismo-electronico",
+            "item_id": "495164915",
+            "video_id": "cN2OCcTe8Bo"
+        },
+        {
+            "time_added": "2013-12-05",
+            "time_updated": "2013-12-05",
+            "excerpt": "Encorsetado vitalmente por las cuatro paredes del Indie Pop y del Garage Rock, 2013 ha sido el a\u00f1o de mi bautismo electr\u00f3nico. Nunca antes hab\u00eda disfrutado tan plenamente un g\u00e9nero que, hasta hace escasos d\u00edas, lo observaba fundido entre una espesa niebla.",
+            "resolved_title": "El a\u00f1o de mi bautismo electr\u00f3nico",
+            "url": "http://www.hipersonica.com/monograficos/el-ano-de-mi-bautismo-electronico",
+            "item_id": "495164915",
+            "video_id": "MlK8jCJrsH4"
+        },
+        {
+            "time_added": "2013-11-29",
+            "time_updated": "2013-11-29",
+            "excerpt": "Steam se ha convertido en la plataforma de v\u00eddeojuegos m\u00e1s importante para los gamers en PC y Mac, y es que la creaci\u00f3n de Valve cuenta no s\u00f3lo con la m\u00e1s grande comunidad en l\u00ednea de v\u00eddeojuegos, sino que su cat\u00e1logo es tan extenso y cuentan con una serie de ofertas tan atractivas, que es",
+            "resolved_title": "Steam Big Picture, an\u00e1lisis a fondo",
+            "url": "http://gizmologia.com/2012/12/steam-big-picture-analisis",
+            "item_id": "266207647",
+            "video_id": "EFrL6-OhN94"
+        },
+        {
+            "time_added": "2013-11-22",
+            "time_updated": "2013-11-22",
+            "excerpt": "",
+            "resolved_title": "\u00bfC\u00f3mo de grande es el punto ciego de un cami\u00f3n?",
+            "url": "http://sucede.es/post/67650940181?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+Sucedees+%28Sucede.es%29",
+            "item_id": "485225498",
+            "video_id": "wzL0Kyk4m-8"
+        },
+        {
+            "time_added": "2013-11-17",
+            "time_updated": "2013-11-17",
+            "excerpt": "Est\u00e1 claro que el \u00faltimo \u00e1lbum de estudio de Kylesa editado a finales de mayo marca una etapa de transici\u00f3n que algunos nos tememos que les aparte totalmente de su vertiente sludge metal.",
+            "resolved_title": "Kylesa le dan un v\u00eddeo a 'Low Tide': animaci\u00f3n freakie para un mal\u00edsimo tema",
+            "url": "http://www.hipersonica.com/videos/kylesa-le-dan-un-video-a-low-tide-animacion-freakie-para-un-malisimo-tema",
+            "item_id": "482272908",
+            "video_id": "5vT45Sxek2s"
+        }
+    ];
+
+    alert(vids);
+    alert(vids[0]['video_id']);
+
+</script>
+
+<body onload="">asda</body>
+
+
+</html>

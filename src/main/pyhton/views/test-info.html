@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'header.html' %}
+<body>
+
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+
+
+{% include 'navbar.html' %}
+
+<br>
+<br>
+<br>
+
+
+<script>
+
+
+    execute('https://gdata.youtube.com/feeds/api/videos/' + "dA-nr9qifI4" + '?v=1&alt=json', callback);
+
+    function callback(data) {
+        alert(data['entry']['title']['$t']);
+    }
+</script>
+
+</body>
+
+{% include 'footer.html' %}
+</html>
