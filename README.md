@@ -1,5 +1,9 @@
 # feedvids webapp
 
+## app on production
+check http://feedvids.herokuapp.com/
+NOTE: not working in https yet
+
 ## configure
 
 - create a src/main/pyhton/config.py with this content:
