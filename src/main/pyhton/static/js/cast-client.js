@@ -47,9 +47,9 @@ function sessionUpdateListener(isAlive) {
 
 function updateInterfaceOnSession() {
     if (isCasting()) {
-        $("#cast_button_image").attr("src","img/ic_media_route_on_holo_light.png");
+        $("#cast_button_image").attr("src","static/img/ic_media_route_on_holo_light.png");
     } else {
-        $("#cast_button_image").attr("src","img/ic_media_route_off_holo_light.png");
+        $("#cast_button_image").attr("src","static/img/ic_media_route_off_holo_light.png");
     }
 }
 

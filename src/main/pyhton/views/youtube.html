@@ -366,11 +366,13 @@
                             </div>
                         </div>
 -->
+<!--
 <ul class="list-group">
+-->
     <!--
     <ul class="nav nav-list bs-docs-sidenav affix" data-spy="affix" data-offset-top="255" data-offset-bottom="200">
         -->
-    <li class="list-group-item">
+<!--    <li class="list-group-item">
         <span class="badge">
             14
             <button  value="delete" type="button" onclick="deleteItem()"class="btn btn-xs btn-danger">
@@ -393,7 +395,7 @@
         <button value="archive" type="button" onclick="archiveItem()" class="btn btn-xs btn-warning">
             <span class="glyphicon glyphicon-ok"  title="archive item"></span>
         </button>
-
+-->
 <!--
         <ul class="list-group">
             <li class="list-group-item">
@@ -510,7 +512,7 @@
 
     function showVideoInfo(video) {
         $("#video_title").html('...');
-        execute('https://gdata.youtube.com/feeds/api/videos/' + video + '?v=1&alt=json', callback);
+        execute('https://www.googleapis.com/youtube/v3/videos?id=' + video + '&key=AIzaSyDvmmt8JxytxYgeWCOnmYPIySaG9tGBPNc&part=snippet', callback);
     }
 
     function setupSocialBar(videoTitle, videoId) {
@@ -543,7 +545,8 @@
 
     }
     function callback(data) {
-        videoTitle = data['entry']['title']['$t'];
+        //videoTitle = data['entry']['title']['$t'];
+        videoTitle = data['items'][0]['snippet']['title'];
         var videoId = getVideoId(currentItemPosition, currentVidPosition);
         var videoLink = "<a target='_blank' href='http://www.youtube.com/watch?v=" +
                 videoId + "'>" + videoTitle + '</a>'
@@ -590,7 +593,7 @@
             playVideo(currentItemPosition, currentVidPosition);
         }
     }
-
+/*
     function nextCastVideo() {
         sendToReceiver({'command':'next'});
     }
@@ -602,10 +605,11 @@
     function castVideoList() {
         sendToReceiver({'command':'load', 'data': vids_for_cast});
         if (isCasting()) {
-            $("#cast_button_image").attr("src","img/ic_media_route_on_holo_light.png");
+            $("#cast_button_image").attr("src","static/img/ic_media_route_on_holo_light.png");
             //$("#player").hide();
         }
     }
+*/    
 
     function nextVid() {
         if (isCasting()) {
@@ -664,7 +668,7 @@
 
 
 </script>
-<script type="text/javascript" src="/js/cast-client.js"></script>
+<!--<script type="text/javascript" src="/js/cast-client.js"></script>
 <script type="text/javascript" src="//www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
-
+-->
 </html>

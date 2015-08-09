@@ -3,7 +3,8 @@ import config
 
 __author__ = 'mora'
 
-MONGO_URL = config.app_config('mongo_url')
+print config.app_config
+MONGO_URL = config.app_config['mongo_url']
 
 cache = {}
 

@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import mimetypes
 import logging
 import os
 import json
@@ -24,13 +25,14 @@ logging.error(os.environ)
 app_uri = 'http://feedvids.herokuapp.com/'
 if 'ENVIRONMENT' in os.environ and os.environ['ENVIRONMENT'].startswith('Dev'):
     print 'We are developing...'
-    app_uri = 'http://localhost:5000/'
+    #app_uri = 'http://localhost:5000/'
+    app_uri = 'http://localhost:8080/'
 else:
     print 'WE ARE ON PRODUCTION'
 
 redirect_uri = app_uri + 'do-callback' + '?post_redirect='
 
-consumer_key = config.app_config['consumer-key']
+consumer_key = config.app_config['consumer_key']
 code = ''
 
 
@@ -254,6 +256,24 @@ class WebpageVidCatcherHandler(Handler):
             self.render_logged('form.html')
 
 
+class StaticView(webapp2.RequestHandler):
+    def get(self, path):
+        print path
+        path = path.replace('/', os.sep)
+        path = 'static' + os.sep  + path
+        print path
+        try:
+            f = open(path, 'r')
+            self.response.headers.__delitem__('Content-Type')
+            if path.endswith('svg'):
+                self.response.headers.add_header('Content-Type', 'image/svg+xml')
+            else:
+                self.response.headers.add_header('Content-Type', mimetypes.guess_type(path)[0])
+            self.response.out.write(f.read())
+            f.close()
+        except Exception, e:
+            print 'Problem in StaticView:', e
+            self.response.set_status(404)
 
 
 web_app = webapp2.WSGIApplication(
@@ -272,6 +292,7 @@ web_app = webapp2.WSGIApplication(
         ('/form', FormHandler),
         ('/test', TestHandler),
         ('/cast', CastHandler),
+        ('/static/(.+)', StaticView),
         ('/about', AboutHandler)
 
     ], debug=True)
@@ -285,8 +306,9 @@ app = Cascade([static_app, web_app])
 
 #f_app = Flask(__name__)
 
-# def main():
-#     httpserver.serve(app, host=socket.gethostname(), port='8080')
-#
-# if __name__ == '__main__':
-#     main()
+def main():
+    from paste import httpserver
+    httpserver.serve(web_app, host='127.0.0.1', port='8080')
+
+if __name__ == '__main__':
+    main()
