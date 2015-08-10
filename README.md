@@ -6,11 +6,11 @@ NOTE: not working in https yet
 
 ## install
 
-pip install Paste
-pip install webapp2
-pip install webob
-pip install jinja2
-pip install pymongo
+- pip install Paste
+- pip install webapp2
+- pip install webob
+- pip install jinja2
+- pip install pymongo
 
 ## configure
 
