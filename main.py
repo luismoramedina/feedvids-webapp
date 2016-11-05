@@ -3,13 +3,13 @@ import mimetypes
 import logging
 import os
 import json
+import os
 
 from paste.urlparser import StaticURLParser
 from paste.cascade import Cascade
 import webapp2
 import jinja2
 
-import config
 from httpcli import httpcli
 from pocket import pocketcli
 from pocket.articleparser import ArticleParser
@@ -32,7 +32,7 @@ else:
 
 redirect_uri = app_uri + 'do-callback' + '?post_redirect='
 
-consumer_key = config.app_config['consumer_key']
+consumer_key = os.environ['CONSUMER_KEY']
 code = ''
 
 

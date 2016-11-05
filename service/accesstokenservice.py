@@ -1,10 +1,9 @@
 import pymongo
-import config
+import os
 
 __author__ = 'mora'
 
-print config.app_config
-MONGO_URL = config.app_config['mongo_url']
+MONGO_URL = os.environ['MONGO_URL']
 
 cache = {}
 

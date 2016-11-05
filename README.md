@@ -14,14 +14,10 @@ NOTE: not working in https yet
 
 ## configure
 
-- create a src/main/pyhton/config.py with this content:
+- set environment vars:
 
-```python
-app_config = {
-    'consumer_key' : '$pocket_consumer_key',
-    'mongo_url' : '$mongo_database_url'
-}
-```
+export CONSUMER_KEY=$pocket_consumer_key
+export MONGO_URL=$mongo_database_url
 
 - create the mongo collection 'users' with columns: 'user', 'access_token', 'service'
 
