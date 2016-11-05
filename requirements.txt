@@ -7,3 +7,4 @@ Flask-Cache==0.10.0
 
 gunicorn==0.17.2
 pymongo
+paste
