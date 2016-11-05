@@ -10,4 +10,3 @@ pymongo
 paste
 webapp2
 webob
-os
